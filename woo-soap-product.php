@@ -783,7 +783,7 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
                 if(!empty($product_variable->get_children())){
 
                     foreach ($product_variable->get_children() as  $var_prodid) {
-                        update_post_meta( $var_prodid, '_stock_status', true);
+                        update_post_meta( $var_prodid, '_stock_status', 1);
                         update_post_meta( $var_prodid, '_backorders', 'notify' );
                     }
 
@@ -921,20 +921,32 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
             
                                         if($smprodstatus!='1'){
 
-                                            $sm_product->set_stock_quantity($vproqty);
+                                            /* $sm_product->set_stock_quantity($vproqty);
                                             $sm_product->set_manage_stock(true);
                                             $sm_product->set_stock_status(true);
-                                            $sm_product->save();
+                                            $sm_product->save(); */
 
-                                            update_post_meta($sm_product->get_id(), '_backorders', 'notify' );
+                                            update_post_meta($sm_product->get_id(), '_stock', $vproqty);
+                                            if($vproqty > 0){
+
+                                                update_post_meta( $sm_product->get_id(), '_stock_status', 1);
+
+                                            }else{
+                                                update_post_meta($sm_product->get_id(), '_stock_status', 'onbackorder');
+                                            }
+                                            
+                                            update_post_meta( $sm_product->get_id(), '_backorders', 'notify' );
+
+                                          
 
                                         }
                                     }
                                     else
                                     {
-                                        update_post_meta($sm_product->get_id(), '_stock', 0);
-                                        update_post_meta($sm_product->get_id(), '_stock_status', 'onbackorder');
-                                        update_post_meta($sm_product->get_id(), '_backorders', 'notify' );
+                                        
+                                    update_post_meta($sm_product->get_id(), '_stock', 0);
+                                    update_post_meta($sm_product->get_id(), '_stock_status', 'onbackorder');
+                                    update_post_meta($sm_product->get_id(), '_backorders', 'notify' );
                                         
                                     }
 
@@ -950,74 +962,87 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
 
                         if($sm_product->get_type()=='variable'){
 
-                        foreach($product_variations as $variation){
+                            foreach($product_variations as $variation){
 
-                            
-                            if(!empty($variation['sku'])){
-
-                                $prodvid=$variation['variation_id'];
-                                $provsku=$variation['sku'];
                                 
-                                
-                                foreach($proMtrxCode1 as $MtrxCode1Data) {
+                                if(!empty($variation['sku'])){
+
+                                    $prodvid=$variation['variation_id'];
+                                    $provsku=$variation['sku'];
                                     
-                                    if(array_key_exists($provsku,$MtrxCode1Data)){
                                     
-                                        update_post_meta($variation['variation_id'], 'primamcode1', $MtrxCode1Data[$provsku]);
-                                        update_post_meta($prodvid, 'attribute_pa_primamcode1', strtolower($MtrxCode1Data[$provsku]));
-                                        wp_set_object_terms( $product->id, $MtrxCode1Data[$provsku], 'pa_primamcode1',true);
-                                        update_post_meta( $variation['variation_id'], '_stock_status', true);
-                                        update_post_meta($variation['variation_id'], '_backorders', 'notify' );
-
+                                    foreach($proMtrxCode1 as $MtrxCode1Data) {
                                         
-                                    }
-
-                                }	
-
-                                foreach($proAvailableDates as $proAvailableDate){
-
-                                    if(array_key_exists($provsku,$proAvailableDate)){
-
-                                        $pro_available_dates=isset($proAvailableDate[$provsku])?$proAvailableDate[$provsku]:'';
-                                        update_post_meta($variation['variation_id'], 'prima_product_available_date', $pro_available_dates);
+                                        if(array_key_exists($provsku,$MtrxCode1Data)){
                                         
+                                            update_post_meta($variation['variation_id'], 'primamcode1', $MtrxCode1Data[$provsku]);
+                                            update_post_meta($prodvid, 'attribute_pa_primamcode1', strtolower($MtrxCode1Data[$provsku]));
+                                            wp_set_object_terms( $product->id, $MtrxCode1Data[$provsku], 'pa_primamcode1',true);
+
+                                            update_post_meta( $variation['variation_id'], '_stock_status', 1);
+                                            update_post_meta($variation['variation_id'], '_backorders', 'notify' );
+                                            
+                                        }
+
+                                    }	
+
+                                    foreach($proAvailableDates as $proAvailableDate){
+
+                                        if(array_key_exists($provsku,$proAvailableDate)){
+
+                                            $pro_available_dates=isset($proAvailableDate[$provsku])?$proAvailableDate[$provsku]:'';
+                                            update_post_meta($variation['variation_id'], 'prima_product_available_date', $pro_available_dates);
+                                            
+                                        }
+                        
                                     }
-                    
+                                    
+                                     foreach ($proSkuQty as $SkuQtyData) {
+                                        
+                                        if(array_key_exists($provsku,$SkuQtyData)){
+
+                                            $vproqty=$SkuQtyData[$provsku];
+
+                                            
+                                            /* $variation_obj = new  WC_Product_Variation($variation['variation_id']);
+                                            $variation_obj->set_stock_quantity($vproqty);
+                                            $variation_obj->set_manage_stock(true);
+                                            $variation_obj->set_stock_status(true);
+                                            $variation_obj->save(); */ 
+                                           
+                                            update_post_meta($variation['variation_id'], '_stock', $vproqty );
+                                            update_post_meta($variation['variation_id'], ' _manage_stock', 'yes' );
+                                            if($vproqty > 0){
+                                                update_post_meta( $variation['variation_id'], '_stock_status', 1);
+                                            }else{
+                                                update_post_meta($variation['variation_id'], '_stock_status', 'onbackorder');
+                                            }
+                                            update_post_meta($variation['variation_id'], '_backorders', 'notify' );
+
+                                        }        
+                                        
+                                    } 
+                                    
+                                    
+
                                 }
+    
                                 
-                                foreach ($proSkuQty as $SkuQtyData) {
-                                    
-                                    if(array_key_exists($provsku,$SkuQtyData)){
-
-                                        $vproqty=$SkuQtyData[$provsku];
-                                        $variation_obj = new  WC_Product_Variation($variation['variation_id']);
-                                        $variation_obj->set_stock_quantity($vproqty);
-                                        $variation_obj->set_manage_stock(true);
-                                        $variation_obj->set_stock_status(true);
-                                        $variation_obj->save(); 
-
-                                        update_post_meta($variation['variation_id'], '_backorders', 'notify' );
-
-                                    }
-                                        
-                                    
-                                }
-                                
-                                
-
                             }
-
-
-                            if(!empty($product->id)){
+                        
+                        }  
+                    
+                    
+                        if(!empty($product->id)){
 
                                 $stock_quantity = $this->wc_get_variable_product_stock_quantity('raw',$product->id);
             
                                 if(!empty($stock_quantity) && $stock_quantity > 0){
             
                                     update_post_meta($product->id, '_stock', $stock_quantity);
-                                    update_post_meta( $product->id, '_stock_status', true);
+                                    update_post_meta( $product->id, '_stock_status', 1);
                                     update_post_meta( $product->id, '_backorders', 'notify' );
-                                   
+                                    
                                 }
                                 else
                                 {
@@ -1027,16 +1052,10 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
                                     
                                 }
                                 
-                            }
-
-                            
-                            
                         }
-                        
-                    }  
-                        
 
-                    }
+
+                }
                 
                 
                     
@@ -1103,9 +1122,7 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
                     $ret = file_put_contents($filename, $data, FILE_APPEND | LOCK_EX);
 
                 }
-
-                
-            /* end week log information */   
+                /* end week log information */   
 
 
             }
@@ -1271,7 +1288,7 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
 
                             $smprodstatus=get_post_meta($product_s->get_id(),'_simple_product_status',true);
 
-                            update_post_meta( $product_s->get_id(), '_backorders', 'no' );
+                            update_post_meta( $product_s->get_id(), '_backorders', 'notify' );
 
                             $prodattr=$product_s->get_attributes('pa_primamcode1');
                            
@@ -1987,6 +2004,7 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
 
     function prima_product_stock_script(){
 
+
             global $post;
             
             $stockstatus='';
@@ -2003,10 +2021,12 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
 
             if($product->get_stock_quantity()>0 && !empty($product->get_manage_stock()) && $product->get_manage_stock()==1){
 
+                update_post_meta($post->ID, '_stock_status', 1);
                 update_post_meta( $post->ID, '_backorders', 'notify' );
 
             }
 
+           
            
             foreach($product->get_visible_children( ) as $variation_id ) {
                 
@@ -2050,6 +2070,8 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
                         $data[ $variation_id ]['prod_available_day'] = $numdays;
 
                         if(!empty($variation_obj->get_manage_stock()) && $variation_obj->get_manage_stock()==1 ){
+
+                            
 
                             if( $variation_obj->get_stock_quantity()==0 && $avail_date!='' && $numdays>60){
 
@@ -2149,7 +2171,7 @@ if ( !class_exists( 'WOOSOAPPRODUCT' ) ) {
                                     if( value[qty]!='' && value[qty] > 0 ){
 
                                         $('#prodstockstatus').text('');
-
+                                        
                                     }else{	
 
                                         

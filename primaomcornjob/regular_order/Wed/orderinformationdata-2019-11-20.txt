@@ -1,0 +1,42 @@
+
+ ********************************** 
+2019-11-20 07:56:47
+ ********************************** 
+
+ Request Data :
+<?xml version="1.0"?>
+            <Request RequestType="MultiNewOrder">
+            <Data UniqueId="63492237" CustDef="" Customer="" TPGUID="20123565" OrderNumber="20123565" HoldOrder="No" HoldOrderNarrative="" OrderChannel="MailOrder" CustomerTitle="" CustomerForename="Millie" CustomerSurname="Humphreys" AddrLine1="41 Souterhead Road " AddrLine2="LOUND" AddrLine3="England" AddrLine4="" AddrLine5="" AddrLine6="" PostCode="DN22 4PL" Country="GB" CustomerEmail="bhargav@webtechsystem.com" CustomerPhone="1234567890" CustomerMobile="" CustomerFax="" CustomerRef="" VatInclusive="Yes" Gender="" ReceiveMail="No" ReceiveEmail="No" ReceiveText="No" ReceivePhone="No" ReceiveMobile="No" RentDetails="No" DateOfBirth="" DelivAddrNo="" DeliveryFAO="" EntitlementCheck="" InvcAddrNo="" OrderType="" PaymentTerms="" Salesman="" SeasonDDValidation="" Wardrobe="" WorksNo="" WREmpCode="" WREmpDept="" WREmpRef1="" WREmpRef2="" WREmpRole="" WROrdRef1="" WROrdRef2="" WROrdRef3="" WROrdRef4="">
+
+            <OrderHeaderData B2B="" Brand=""  SpecialInstructions="" ShippingInstructions="" SourceMedia="" OrderCategory="PAYPAL" OrderStatus="" Carrier="" CarrServ="" Currency="" OrderContact="" OrderDate="" OrderEmail="" OrderPaid="" PaymentOnOrder="" ProdConv="" Proforma="" Season="" SendToApproval=""/>
+
+                <OrderInvoiceData InvoiceTitle="" InvoiceForename="Millie" InvoiceSurname="Humphreys" InvoiceAddrLine1="41 Souterhead Road  " InvoiceAddrLine2="LOUND" InvoiceAddrLine3="England" InvoiceAddrLine4="" InvoiceAddrLine5="" InvoiceAddrLine6="" InvoicePostCode="DN22 4PL" InvoiceCountry="GB" InvoiceEmail="bhargav@webtechsystem.com" InvoicePhone="1234567890" InvoiceMobile="" InvoiceFax="" InvoiceFAO="" /><OrderLineData DueDate="" EnhancementToLine="" ExtTaxVal="" FIPSCode1="" FIPSCode2="" FIPSCode3="" FIPSCode4="" FIPSCode5="" FIPSCode6="" FIPSValue1="" FIPSValue2="" FIPSValue3="" FIPSValue4="" FIPSValue5="" FIPSValue6="" Inventory="" LineSalesman="" Reserve="" TrDisc="" VchGreetMessage="" VchPostCode="" Warehouse="" WorksNo="" OrderLine="1" Product="LBBLOB" MtrxCode1="F" MtrxCode2="080" MtrxCode3="" MtrxCode4="" Quantity="1" Price="140" Promotion="" PromotionValue="" WebPrmCode="" LineNarrative="" LineReference="" Voucher="No" VchMethod="" VchGreetcard="" VchMessage="" VchName="" VchAddrLine1="" VchAddrLine2="" VchAddrLine3="" VchAddrLine4="" VchAddrLine5="" VchAddrLine6="" VchCntry="" VchEmail=""/><OrderChargeData Charge="RM24" ChargeValue="0.00"/><OrderPaymentData PayMethod="CSH" SubPayMethod="PAYPAL" AuthRef="" AuthDate="" AuthTime="" TranAmount="140.00" BankSort="" BankAccount="" ChequeNum="" PayProvider="NONE" PayProviderStatus="" PayAuthRef="20123565" PayAuthId="20123565" LineRef="20123565" TokenID="" CAVV="" ECI="" ATSData="" TransactionID="8SY96691XA6788520" AuthenticationStatus="" VchNumber="" FailureCount="" ExchCreditNo="" />
+            </Data>
+        </Request>
+ Response Data :
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Result Company="1" RequestType="MultiNewOrder"><Data CustRef="" CustomerCode="" OrderNumber="20123565" RequestStatus="ERROR" TPGUID="20123565" UniqueID="63492237"><RequestError Error="(E:21) Sales Order Header already exists with Order Number equal to 20123565  DEV MODE Stack Trace (Msg - E:Exist1): CheckOrders imp/procorders.p NewMain imp/procorders.p EndProcess-NewOrder sop/wsomhandler.p EndProcess-MultiNewOrder sop/wsomhandler.p wsom-EndNode-Data sop/wsomhandler.p RunCallbackProc lib/xmlutil2.p EndElement lib/xmlutil2.p ParseXML lib/xmlutil2.p sop/wsomhandler.p
+(E:194) NO VALID Sales Order Header Details for Line  DEV MODE Stack Trace (Msg - E:ErrMsg): LeftOvers imp/procorders.p NewMain imp/procorders.p EndProcess-NewOrder sop/wsomhandler.p EndProcess-MultiNewOrder sop/wsomhandler.p wsom-EndNode-Data sop/wsomhandler.p RunCallbackProc lib/xmlutil2.p EndElement lib/xmlutil2.p ParseXML lib/xmlutil2.p sop/wsomhandler.p
+(E:194) NO VALID Sales Order Line Details for Matrix Levels  DEV MODE Stack Trace (Msg - E:ErrMsg): LeftOvers imp/procorders.p NewMain imp/procorders.p EndProcess-NewOrder sop/wsomhandler.p EndProcess-MultiNewOrder sop/wsomhandler.p wsom-EndNode-Data sop/wsomhandler.p RunCallbackProc lib/xmlutil2.p EndElement lib/xmlutil2.p ParseXML lib/xmlutil2.p sop/wsomhandler.p
+(E:194) NO VALID Sales Order Header Details for Charges   DEV MODE Stack Trace (Msg - E:ErrMsg): LeftOvers imp/procorders.p NewMain imp/procorders.p EndProcess-NewOrder sop/wsomhandler.p EndProcess-MultiNewOrder sop/wsomhandler.p wsom-EndNode-Data sop/wsomhandler.p RunCallbackProc lib/xmlutil2.p EndElement lib/xmlutil2.p ParseXML lib/xmlutil2.p sop/wsomhandler.p
+" UniqueID="63492237"/></Data></Result>
+ ********* End ********* 
+
+ ********************************** 
+2019-11-20 07:59:15
+ ********************************** 
+
+ Request Data :
+<?xml version="1.0"?>
+            <Request RequestType="MultiNewOrder">
+            <Data UniqueId="75017737" CustDef="" Customer="" TPGUID="20123567" OrderNumber="20123567" HoldOrder="No" HoldOrderNarrative="" OrderChannel="MailOrder" CustomerTitle="" CustomerForename="Millie" CustomerSurname="Humphreys" AddrLine1="41 Souterhead Road " AddrLine2="LOUND" AddrLine3="England" AddrLine4="" AddrLine5="" AddrLine6="" PostCode="DN22 4PL" Country="GB" CustomerEmail="bhargav@webtechsystem.com" CustomerPhone="1234567890" CustomerMobile="" CustomerFax="" CustomerRef="" VatInclusive="Yes" Gender="" ReceiveMail="No" ReceiveEmail="No" ReceiveText="No" ReceivePhone="No" ReceiveMobile="No" RentDetails="No" DateOfBirth="" DelivAddrNo="" DeliveryFAO="" EntitlementCheck="" InvcAddrNo="" OrderType="" PaymentTerms="" Salesman="" SeasonDDValidation="" Wardrobe="" WorksNo="" WREmpCode="" WREmpDept="" WREmpRef1="" WREmpRef2="" WREmpRole="" WROrdRef1="" WROrdRef2="" WROrdRef3="" WROrdRef4="">
+
+            <OrderHeaderData B2B="" Brand=""  SpecialInstructions="" ShippingInstructions="" SourceMedia="" OrderCategory="PAYPAL" OrderStatus="" Carrier="" CarrServ="" Currency="" OrderContact="" OrderDate="" OrderEmail="" OrderPaid="" PaymentOnOrder="" ProdConv="" Proforma="" Season="" SendToApproval=""/>
+
+                <OrderInvoiceData InvoiceTitle="" InvoiceForename="Millie" InvoiceSurname="Humphreys" InvoiceAddrLine1="41 Souterhead Road  " InvoiceAddrLine2="LOUND" InvoiceAddrLine3="England" InvoiceAddrLine4="" InvoiceAddrLine5="" InvoiceAddrLine6="" InvoicePostCode="DN22 4PL" InvoiceCountry="GB" InvoiceEmail="bhargav@webtechsystem.com" InvoicePhone="1234567890" InvoiceMobile="" InvoiceFax="" InvoiceFAO="" /><OrderLineData DueDate="" EnhancementToLine="" ExtTaxVal="" FIPSCode1="" FIPSCode2="" FIPSCode3="" FIPSCode4="" FIPSCode5="" FIPSCode6="" FIPSValue1="" FIPSValue2="" FIPSValue3="" FIPSValue4="" FIPSValue5="" FIPSValue6="" Inventory="" LineSalesman="" Reserve="" TrDisc="" VchGreetMessage="" VchPostCode="" Warehouse="" WorksNo="" OrderLine="1" Product="ETOS" MtrxCode1="F" MtrxCode2="075" MtrxCode3="" MtrxCode4="" Quantity="1" Price="185" Promotion="" PromotionValue="" WebPrmCode="" LineNarrative="" LineReference="" Voucher="No" VchMethod="" VchGreetcard="" VchMessage="" VchName="" VchAddrLine1="" VchAddrLine2="" VchAddrLine3="" VchAddrLine4="" VchAddrLine5="" VchAddrLine6="" VchCntry="" VchEmail=""/><OrderChargeData Charge="RM24" ChargeValue="0.00"/><OrderPaymentData PayMethod="CSH" SubPayMethod="PAYPAL" AuthRef="" AuthDate="" AuthTime="" TranAmount="185.00" BankSort="" BankAccount="" ChequeNum="" PayProvider="NONE" PayProviderStatus="" PayAuthRef="20123567" PayAuthId="20123567" LineRef="20123567" TokenID="" CAVV="" ECI="" ATSData="" TransactionID="23350299LS0576525" AuthenticationStatus="" VchNumber="" FailureCount="" ExchCreditNo="" />
+            </Data>
+        </Request>
+ Response Data :
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<Result Company="1" RequestType="MultiNewOrder"><Data CustRef="" CustomerCode="0000367612" OrderNumber="20123567" RequestStatus="OK" TPGUID="20123567" UniqueID="75017737"/></Result>
+ ********* End ********* 
